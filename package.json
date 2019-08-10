@@ -4,6 +4,7 @@
 	"description": "Run Scala code by a click on a button!",
 	"publisher": "alssys",
 	"version": "0.1.0",
+	"repository": "https://github.com/matt035343/interactive-scala",
 	"engines": {
 		"vscode": "^1.37.0"
 	},
@@ -21,7 +22,7 @@
 				"title": "Exectute selected code in Interactive Scala"
 			}
 		],
-		"keybindings":[
+		"keybindings": [
 			{
 				"command": "extension.executeInInteractiveScala",
 				"key": "alt+enter",
