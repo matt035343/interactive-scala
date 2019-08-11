@@ -63,3 +63,4 @@ typings/
 out
 .vscode-test/
 *.vsix
+.metals
