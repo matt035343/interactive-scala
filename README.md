@@ -1,4 +1,4 @@
-# interactive-scala README
+# Interactive Scala
 
 Interactive Scala is an extension for Visual Studio Code. Inspired by Ionide F#, this extension lets you select Scala code and execute it in the Scala interpreter REPL by a quick keyboard shortcut.
 
@@ -8,14 +8,14 @@ The extension will automatically open a new integrated terminal and initialise t
 
 Once in a `.scala` file, you can select a subset of your Scala code and use the keyboard shortcut `alt+enter` to quickly execute the code in the Scala interpreter.
 
-> Animation!
+![How it works](img/animation.gif "How it works")
 
 ## Requirements
 
 You must have installed the Scala binaries and added the `scala` command to PATH.
 https://www.scala-lang.org/download/
 
-> Image!
+![Where to get binaries](img/install.png "Where to get binaries")
 
 ## Extension Settings
 
@@ -24,6 +24,8 @@ No configuration is available at this point.
 ## Known Issues
 
 The default shell for the integrated terminal on Windows (PowerShell) is known to cause problems with manual input to the Scala interpreter. Change the shell to e.g. Git Bash as a workaround.
+
+The extension has not been tested on MacOS and Linux.
 
 ## Release Notes
 
