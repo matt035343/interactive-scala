@@ -3,7 +3,7 @@
 	"displayName": "Interactive Scala",
 	"description": "Run Scala code snippets by a click on a button!",
 	"publisher": "alssys",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"repository": "https://github.com/matt035343/interactive-scala",
 	"icon": "img/icon.png",
 	"license": "MIT",
