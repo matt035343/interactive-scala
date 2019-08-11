@@ -13,7 +13,7 @@ function initialiseInteractiveScala() {
 export function activate(context: vscode.ExtensionContext) {
 	let executeInInteractiveScalaCommand = vscode.commands.registerCommand('extension.executeInInteractiveScala', () => {
 		let activeTextEditor = vscode.window.activeTextEditor;
-		if(activeTextEditor) {
+		if(activeTextEditor && activeTextEditor.document.languageId === "scala") {
 			let selection = activeTextEditor.selection;
 			if(!selection.isEmpty) {
 				let text = activeTextEditor.document.getText(selection);
