@@ -10,15 +10,25 @@ function initialiseInteractiveScala() {
 	interactiveTerminal.show(false);
 }
 
+function sendSelectionToTerminal(activeTextEditor: vscode.TextEditor) {
+	let selection = activeTextEditor.selection;
+	let text = "";
+	if(selection.isEmpty) {
+		let lineNumber = selection.active.line;
+		let line = activeTextEditor.document.lineAt(lineNumber);
+		text = line.text;
+	} else {
+		text = activeTextEditor.document.getText(selection);
+	}
+	text = text.trim();
+	interactiveTerminal.sendText(text, true);
+}
+
 export function activate(context: vscode.ExtensionContext) {
 	let executeInInteractiveScalaCommand = vscode.commands.registerCommand('extension.executeInInteractiveScala', () => {
 		let activeTextEditor = vscode.window.activeTextEditor;
 		if(activeTextEditor && activeTextEditor.document.languageId === "scala") {
-			let selection = activeTextEditor.selection;
-			if(!selection.isEmpty) {
-				let text = activeTextEditor.document.getText(selection);
-				interactiveTerminal.sendText(text, true);
-			}
+			sendSelectionToTerminal(activeTextEditor);
 		}
 	});
 	
