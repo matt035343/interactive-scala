@@ -29,8 +29,15 @@ The extension has not been tested on MacOS and Linux.
 
 ## Release Notes
 
+### 1.1.0
+
+Added features:
+- Added single-line execution. Place the caret on a code line and execute it without selecting any text.
+
 ### 1.0.0
 
 First stable version.
-- Added automatic opening of Scala interpreter
-- Added shortcut to execute Scala code in interpreter
+
+Added features:
+- Added automatic opening of Scala interpreter.
+- Added shortcut to execute Scala code in interpreter.
