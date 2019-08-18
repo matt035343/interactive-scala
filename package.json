@@ -20,13 +20,13 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.executeInInteractiveScala",
+				"command": "interactiveScala.executeInInteractiveScala",
 				"title": "Exectute selected code in Interactive Scala"
 			}
 		],
 		"keybindings": [
 			{
-				"command": "extension.executeInInteractiveScala",
+				"command": "interactiveScala.executeInInteractiveScala",
 				"key": "alt+enter",
 				"when": "editorTextFocus"
 			}

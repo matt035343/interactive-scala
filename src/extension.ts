@@ -25,7 +25,7 @@ function sendSelectionToTerminal(activeTextEditor: vscode.TextEditor) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-	let executeInInteractiveScalaCommand = vscode.commands.registerCommand('extension.executeInInteractiveScala', () => {
+	let executeInInteractiveScalaCommand = vscode.commands.registerCommand('interactiveScala.executeInInteractiveScala', () => {
 		let activeTextEditor = vscode.window.activeTextEditor;
 		if(activeTextEditor && activeTextEditor.document.languageId === "scala") {
 			sendSelectionToTerminal(activeTextEditor);
