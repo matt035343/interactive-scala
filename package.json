@@ -30,6 +30,23 @@
 				"key": "alt+enter",
 				"when": "editorTextFocus"
 			}
+		],
+		"configuration":[
+			{
+				"title": "Interactive Scala",
+				"properties": {
+					"interactiveScala.interpreter": {
+						"type": "string",
+						"default": "scala",
+						"enum": ["scala", "sbt console"],
+						"enumDescriptions": [
+							"Uses system-wide Scala installation for interpretation.",
+							"Uses project SBT installation for interpretation."
+						],
+						"markdownDescription": "Change the REPL interpreter used by Interactive Scala. `scala` requires installation of system-wide scala binaries. `sbt` requires installation of Scala Build Tool and that there's initialised a SBT project in the working directory. **Default:** `scala`."
+					}
+				}
+			}
 		]
 	},
 	"scripts": {

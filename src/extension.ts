@@ -1,12 +1,21 @@
 import * as vscode from 'vscode';
 
 let interactiveTerminal: vscode.Terminal;
+let configuration: vscode.WorkspaceConfiguration;
+const defaultInterpreter: string = "scala";
 
 function initialiseInteractiveScala() {
-	if(!interactiveTerminal) {
-		interactiveTerminal = vscode.window.createTerminal("Interactive Scala");
-		interactiveTerminal.sendText("scala", true);
+	let interpreter: string|undefined = configuration.get("interpreter");
+	if(!interpreter) {
+		interpreter = defaultInterpreter;
 	}
+
+	if(interactiveTerminal) {
+		interactiveTerminal.dispose();
+	}
+
+	interactiveTerminal = vscode.window.createTerminal("Interactive Scala");
+	interactiveTerminal.sendText(interpreter, true);
 	interactiveTerminal.show(false);
 }
 
@@ -31,8 +40,18 @@ export function activate(context: vscode.ExtensionContext) {
 			sendSelectionToTerminal(activeTextEditor);
 		}
 	});
+
+	let configurationChanged = vscode.workspace.onDidChangeConfiguration(e => {
+		if(e.affectsConfiguration("interactiveScala")) {
+			configuration = vscode.workspace.getConfiguration("interactiveScala");
+			initialiseInteractiveScala();
+		}
+	});
+
+	configuration = vscode.workspace.getConfiguration("interactiveScala");
 	
 	context.subscriptions.push(executeInInteractiveScalaCommand);
+	context.subscriptions.push(configurationChanged);
 
 	initialiseInteractiveScala();
 }
