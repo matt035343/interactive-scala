@@ -56,4 +56,8 @@ export function activate(context: vscode.ExtensionContext) {
 	initialiseInteractiveScala();
 }
 
-export function deactivate() {}
+export function deactivate() {
+	if(interactiveTerminal) { 
+		interactiveTerminal.dispose();
+	}
+}
