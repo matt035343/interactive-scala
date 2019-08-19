@@ -47,7 +47,14 @@
 					}
 				}
 			}
-		]
+		],
+		"menus": {
+			"editor/context": [{
+				"when": "editorHasSelection && resourceLangId == scala",
+				"command": "interactiveScala.executeInInteractiveScala",
+				"group": "z_commands"
+			}]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
