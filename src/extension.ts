@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 
+let terminalDisposed: boolean = true;
 let interactiveTerminal: vscode.Terminal;
 let configuration: vscode.WorkspaceConfiguration;
 const defaultInterpreter: string = "scala";
@@ -10,16 +11,19 @@ function initialiseInteractiveScala() {
 		interpreter = defaultInterpreter;
 	}
 
-	if(interactiveTerminal) {
-		interactiveTerminal.dispose();
-	}
+	disposeTerminal();
 
 	interactiveTerminal = vscode.window.createTerminal("Interactive Scala");
 	interactiveTerminal.sendText(interpreter, true);
 	interactiveTerminal.show(false);
+	terminalDisposed = false;
 }
 
 function sendSelectionToTerminal(activeTextEditor: vscode.TextEditor) {
+	if(terminalDisposed) { 
+		initialiseInteractiveScala();
+	}
+
 	let selection = activeTextEditor.selection;
 	let text = "";
 	if(selection.isEmpty) {
@@ -31,6 +35,13 @@ function sendSelectionToTerminal(activeTextEditor: vscode.TextEditor) {
 	}
 	text = text.trim();
 	interactiveTerminal.sendText(text, true);
+}
+
+function disposeTerminal() {
+	if(interactiveTerminal) {
+		interactiveTerminal.dispose();
+	}
+	terminalDisposed = true;
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -48,16 +59,21 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	let disposedTerminal = vscode.window.onDidCloseTerminal(e => {
+		if(interactiveTerminal && e.processId === interactiveTerminal.processId) {
+			disposeTerminal();
+		}
+	});
+
 	configuration = vscode.workspace.getConfiguration("interactiveScala");
 	
 	context.subscriptions.push(executeInInteractiveScalaCommand);
 	context.subscriptions.push(configurationChanged);
+	context.subscriptions.push(disposedTerminal);
 
 	initialiseInteractiveScala();
 }
 
 export function deactivate() {
-	if(interactiveTerminal) { 
-		interactiveTerminal.dispose();
-	}
+	disposeTerminal();
 }
