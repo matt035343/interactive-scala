@@ -34,7 +34,10 @@ function sendSelectionToTerminal(activeTextEditor: vscode.TextEditor) {
 		text = activeTextEditor.document.getText(selection);
 	}
 	text = text.trim();
-	interactiveTerminal.sendText(text, true);
+	interactiveTerminal.show();
+	interactiveTerminal.sendText(`:paste`);
+	interactiveTerminal.sendText(`${text}`);
+	interactiveTerminal.sendText("\u0004");
 }
 
 function disposeTerminal() {
