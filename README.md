@@ -45,6 +45,11 @@ The extension has not been tested on MacOS and Linux.
 
 ## Release Notes
 
+### 1.2.1
+Changed:
+- The input is now wrapped in `:paste` and `Ctrl+D` to support bigger code pieces better.
+- The terminal now shows itself when code is sent to the terminal.
+
 ### 1.2.0
 
 Changed:
