@@ -31,14 +31,17 @@
 				"when": "editorTextFocus"
 			}
 		],
-		"configuration":[
+		"configuration": [
 			{
 				"title": "Interactive Scala",
 				"properties": {
 					"interactiveScala.interpreter": {
 						"type": "string",
 						"default": "scala",
-						"enum": ["scala", "sbt console"],
+						"enum": [
+							"scala",
+							"sbt console"
+						],
 						"enumDescriptions": [
 							"Uses system-wide Scala installation for interpretation.",
 							"Uses project SBT installation for interpretation."
@@ -49,11 +52,13 @@
 			}
 		],
 		"menus": {
-			"editor/context": [{
-				"when": "editorHasSelection && resourceLangId == scala",
-				"command": "interactiveScala.executeInInteractiveScala",
-				"group": "z_commands"
-			}]
+			"editor/context": [
+				{
+					"when": "editorHasSelection && resourceLangId == scala",
+					"command": "interactiveScala.executeInInteractiveScala",
+					"group": "z_commands"
+				}
+			]
 		}
 	},
 	"scripts": {

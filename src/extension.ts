@@ -30,6 +30,9 @@ function sendSelectionToTerminal(activeTextEditor: vscode.TextEditor) {
 		let lineNumber = selection.active.line;
 		let line = activeTextEditor.document.lineAt(lineNumber);
 		text = line.text;
+		
+		let newCursorPosition = selection.active.translate(1,0);
+		activeTextEditor.selection = new vscode.Selection(newCursorPosition, newCursorPosition);
 	} else {
 		text = activeTextEditor.document.getText(selection);
 	}
