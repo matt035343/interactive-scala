@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as fs from 'fs';
 
 let terminalDisposed: boolean = true;
 let interactiveTerminal: vscode.Terminal;
@@ -7,6 +8,7 @@ const defaultInterpreter: string = "scala";
 
 function initialiseInteractiveScala() {
 	let interpreter: string|undefined = configuration.get("interpreter");
+	let requiredFiles: Array<string>|undefined = configuration.get("requiredFiles");
 	if(!interpreter) {
 		interpreter = defaultInterpreter;
 	}
@@ -17,6 +19,19 @@ function initialiseInteractiveScala() {
 	interactiveTerminal.sendText(interpreter, true);
 	interactiveTerminal.show(false);
 	terminalDisposed = false;
+
+	//A bit hacky, but the interpreter must have opened when following is sent.
+	setTimeout(() => {
+		if(requiredFiles) {
+			requiredFiles.forEach(file => {
+				if(fs.existsSync(file)) {
+					interactiveTerminal.sendText(":require "+file, true);
+				} else {
+					vscode.window.showErrorMessage("Following required file was not found and is not loaded into the Scala REPL: "+file);
+				}
+			});
+		}
+	}, 2000);
 }
 
 function sendSelectionToTerminal(activeTextEditor: vscode.TextEditor) {

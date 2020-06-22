@@ -47,6 +47,16 @@
 							"Uses project SBT installation for interpretation."
 						],
 						"markdownDescription": "Change the REPL interpreter used by Interactive Scala. `scala` requires installation of system-wide scala binaries. `sbt` requires installation of Scala Build Tool and that there's initialised a SBT project in the working directory. **Default:** `scala`."
+					},
+					"interactiveScala.requiredFiles": {
+						"type": "array",
+						"default": [],
+						"uniqueItems": true,
+						"description": "Provide a list of jar-files to be required upon start of the REPL.",
+						"items": {
+							"type": "string",
+							"title": "Path to jar-file"
+						}
 					}
 				}
 			}
