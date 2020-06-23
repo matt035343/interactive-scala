@@ -3,7 +3,7 @@
 	"displayName": "Interactive Scala",
 	"description": "Run Scala code snippets by a click on a button!",
 	"publisher": "alssys",
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"repository": "https://github.com/matt035343/interactive-scala",
 	"icon": "img/icon.png",
 	"license": "MIT",
@@ -38,15 +38,8 @@
 					"interactiveScala.interpreter": {
 						"type": "string",
 						"default": "scala",
-						"enum": [
-							"scala",
-							"sbt console"
-						],
-						"enumDescriptions": [
-							"Uses system-wide Scala installation for interpretation.",
-							"Uses project SBT installation for interpretation."
-						],
-						"markdownDescription": "Change the REPL interpreter used by Interactive Scala. `scala` requires installation of system-wide scala binaries. `sbt` requires installation of Scala Build Tool and that there's initialised a SBT project in the working directory. **Default:** `scala`."
+						"title": "Path for the Scala interpreter to use.",
+						"markdownDescription": "Here you can provide a path (and custom arguments) to a Scala interpreter REPL. If you want to run the interpreter with flags or parameters, you can also specify it here. E.g. write `scala` to use a system-wide installation of Scala or write `sbt console` to use the SBT interpreter. You can also preload a file, example: `scala -i Test.scala`"
 					},
 					"interactiveScala.requiredFiles": {
 						"type": "array",

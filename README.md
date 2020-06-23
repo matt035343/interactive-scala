@@ -1,6 +1,6 @@
 # Interactive Scala
 
-Interactive Scala is an extension for Visual Studio Code. Inspired by Ionide F#, this extension lets you select Scala code and execute it in the Scala interpreter REPL by a quick keyboard shortcut.
+Interactive Scala is an extension for Visual Studio Code. This extension lets you select Scala code and execute it in the Scala interpreter REPL by a quick keyboard shortcut.
 
 ## Features
 
@@ -17,7 +17,7 @@ Shortcuts are not your style? You can now use the context menu as well! Just sel
 
 ## Extension Settings
 
-The used REPL Scala interpreter can be changed through the VS Code preferences. You can currently choose between `scala` (default) and `sbt console`. 
+The used REPL Scala interpreter can be changed through the VS Code preferences. You can choose any Scala interpreter you like, including `scala` (default) and `sbt console`. 
 The first of which is using the system-wide Scala installation through the `scala` command. `sbt console` uses the Scala Build Tool thourgh the `sbt`command and will use the local project installation. Please note, that SBT will instantiate a new project, if none is found in the working directory. 
 
 Using `sbt console` is a bit slower initially, as SBT will compile and check for updates before entering the interpreter.
@@ -41,9 +41,16 @@ https://www.scala-sbt.org/download.html
 The default shell for the integrated terminal on Windows (PowerShell) is known to cause problems with manual input to the Scala interpreter. 
 Change the shell to e.g. Git Bash as a workaround.
 
-The extension has not been tested on MacOS and Linux.
-
 ## Release Notes
+
+### 1.3.0
+Changed:
+- Free choice of the interpreter, you are no longer limited to `scala` and `sbt console`.
+- The cursor now moves to the next line when you execute a single line.
+- The focus is now maintained on the selected code instead of transferring focus to the terminal when executing code.
+
+Added:
+- Setting to require jar-files upon initialisation of the REPL.
 
 ### 1.2.1
 Changed:
