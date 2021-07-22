@@ -22,13 +22,30 @@
 			{
 				"command": "interactiveScala.executeInInteractiveScala",
 				"title": "Exectute selected code in Interactive Scala"
+			},
+			{
+				"command": "interactiveScala.executeFileInInteractiveScala",
+				"title": "Exectute selected file in Interactive Scala"
+			},
+			{
+				"command": "interactiveScala.resetInteractiveScala",
+				"title": "Reset Interactive Scala"
 			}
 		],
 		"keybindings": [
 			{
 				"command": "interactiveScala.executeInInteractiveScala",
 				"key": "alt+enter",
-				"when": "editorTextFocus"
+				"when": "editorTextFocus && resourceLangId == scala"
+			},
+			{
+				"command": "interactiveScala.executeFileInInteractiveScala",
+				"key": "alt+ctrl+enter",
+				"when": "editorTextFocus && resourceLangId == scala"
+			},
+			{
+				"command": "interactiveScala.resetInteractiveScala",
+				"key": "alt+ctrl+r",
 				"when": "editorTextFocus && resourceLangId == scala"
 			}
 		],
@@ -60,6 +77,16 @@
 				{
 					"when": "editorHasSelection && resourceLangId == scala",
 					"command": "interactiveScala.executeInInteractiveScala",
+					"group": "z_commands"
+				},
+				{
+					"when": "resourceLangId == scala",
+					"command": "interactiveScala.executeFileInInteractiveScala",
+					"group": "z_commands"
+				},
+				{
+					"when": "resourceLangId == scala",
+					"command": "interactiveScala.resetInteractiveScala",
 					"group": "z_commands"
 				}
 			]

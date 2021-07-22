@@ -51,6 +51,21 @@ function sendSelectionToTerminal(activeTextEditor: vscode.TextEditor) {
 	} else {
 		text = activeTextEditor.document.getText(selection);
 	}
+
+	sendToTerminal(text);
+}
+
+function sendFileToTerminal(activeTextEditor: vscode.TextEditor) {
+	if(terminalDisposed) { 
+		initialiseInteractiveScala();
+	}
+
+	let text = activeTextEditor.document.getText();
+
+	sendToTerminal(text);
+}
+
+function sendToTerminal(text: string) {
 	text = text.trim();
 	interactiveTerminal.show(true);
 	interactiveTerminal.sendText(`:paste`);
@@ -65,6 +80,11 @@ function disposeTerminal() {
 	terminalDisposed = true;
 }
 
+function reset() {
+	disposeTerminal();
+	initialiseInteractiveScala();
+}
+
 export function activate(context: vscode.ExtensionContext) {
 	let executeInInteractiveScalaCommand = vscode.commands.registerCommand('interactiveScala.executeInInteractiveScala', () => {
 		let activeTextEditor = vscode.window.activeTextEditor;
@@ -72,6 +92,15 @@ export function activate(context: vscode.ExtensionContext) {
 			sendSelectionToTerminal(activeTextEditor);
 		}
 	});
+
+	let executeFileInInteractiveScalaCommand = vscode.commands.registerCommand('interactiveScala.executeFileInInteractiveScala', () => {
+		let activeTextEditor = vscode.window.activeTextEditor;
+		if(activeTextEditor && activeTextEditor.document.languageId === "scala") {
+			sendFileToTerminal(activeTextEditor);
+		}
+	});
+
+	let resetInteractiveScalaCommand = vscode.commands.registerCommand('interactiveScala.resetInteractiveScala', reset);
 
 	let configurationChanged = vscode.workspace.onDidChangeConfiguration(e => {
 		if(e.affectsConfiguration("interactiveScala")) {
@@ -89,6 +118,8 @@ export function activate(context: vscode.ExtensionContext) {
 	configuration = vscode.workspace.getConfiguration("interactiveScala");
 	
 	context.subscriptions.push(executeInInteractiveScalaCommand);
+	context.subscriptions.push(executeFileInInteractiveScalaCommand);
+	context.subscriptions.push(resetInteractiveScalaCommand);
 	context.subscriptions.push(configurationChanged);
 	context.subscriptions.push(disposedTerminal);
 
