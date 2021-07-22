@@ -2,6 +2,8 @@
 
 Interactive Scala is an extension for Visual Studio Code. This extension lets you select Scala code and execute it in the Scala interpreter REPL by a quick keyboard shortcut.
 
+**Requires Scala Syntax (official) extension.**
+
 ## Features
 
 The extension will automatically open a new integrated terminal and initialise the Scala interpreter upon opening a `.scala` file.
