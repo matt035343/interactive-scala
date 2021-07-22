@@ -29,6 +29,7 @@
 				"command": "interactiveScala.executeInInteractiveScala",
 				"key": "alt+enter",
 				"when": "editorTextFocus"
+				"when": "editorTextFocus && resourceLangId == scala"
 			}
 		],
 		"configuration": [
