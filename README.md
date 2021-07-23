@@ -45,7 +45,18 @@ Change the shell to e.g. Git Bash as a workaround.
 
 ## Release Notes
 
+### 1.4.0
+
+Changed:
+- Now requires Scala Syntax (official) extension.
+- Fixed that the shortcuts were available outside Scala files.
+
+Added:
+- Execute a whole file by opening it in the editor and press `ctrl+alt+enter` or by selecting it from the context menu in the file.
+- Reset Interactive Scala by pressing `ctrl+alt+r` or by selecting it from the context menu in the file.
+  
 ### 1.3.0
+
 Changed:
 - Free choice of the interpreter, you are no longer limited to `scala` and `sbt console`.
 - The cursor now moves to the next line when you execute a single line.
@@ -55,6 +66,7 @@ Added:
 - Setting to require jar-files upon initialisation of the REPL.
 
 ### 1.2.1
+
 Changed:
 - The input is now wrapped in `:paste` and `Ctrl+D` to support bigger code pieces better.
 - The terminal now shows itself when code is sent to the terminal.
