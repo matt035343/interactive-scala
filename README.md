@@ -8,8 +8,8 @@ Interactive Scala is an extension for Visual Studio Code. This extension lets yo
 
 The extension will automatically open a new integrated terminal and initialise the Scala interpreter upon opening a `.scala` file.
 
-Once in a `.scala` file, you can select a subset of your Scala code and use the keyboard shortcut `alt+enter` to quickly execute the code in the Scala interpreter. 
-The shortcut can be changed in your VS Code settings.
+Once in a `.scala` file, you can select a subset of your Scala code and use the keyboard shortcut `alt+enter` to quickly execute the code in the Scala interpreter or `ctrl+alt+enter` to execute a whole file at once. `ctrl+alt+r` allows you to reset Interactive Scala and start from scratch.
+The shortcuts can be changed in your VS Code settings.
 
 If you are to send single line to the interpreter, there's no need for selection at all! Just place the caret on the line and press the shortcut.
 
@@ -20,7 +20,7 @@ Shortcuts are not your style? You can now use the context menu as well! Just sel
 ## Extension Settings
 
 The used REPL Scala interpreter can be changed through the VS Code preferences. You can choose any Scala interpreter you like, including `scala` (default) and `sbt console`. 
-The first of which is using the system-wide Scala installation through the `scala` command. `sbt console` uses the Scala Build Tool thourgh the `sbt`command and will use the local project installation. Please note, that SBT will instantiate a new project, if none is found in the working directory. 
+The first of which is using the system-wide Scala installation through the `scala` command. `sbt console` uses the Scala Build Tool thourgh the `sbt` command and will use the local project installation. Please note, that SBT will instantiate a new project, if none is found in the working directory. 
 
 Using `sbt console` is a bit slower initially, as SBT will compile and check for updates before entering the interpreter.
 
