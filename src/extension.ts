@@ -123,7 +123,10 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(configurationChanged);
 	context.subscriptions.push(disposedTerminal);
 
-	initialiseInteractiveScala();
+	let autoStart: boolean|undefined = configuration.get("autoStart");
+	if (autoStart === undefined || autoStart) {
+		initialiseInteractiveScala();
+	}
 }
 
 export function deactivate() {

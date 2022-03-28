@@ -68,6 +68,12 @@
 							"type": "string",
 							"title": "Path to jar-file"
 						}
+					},
+					"interactiveScala.autoStart": {
+						"type": "boolean",
+						"default": true,
+						"title": "Automatic opening of Scala interpreter.",
+						"markdownDescription": "Automatically open a new integrated terminal and initialise the Scala interpreter upon opening a .scala file."
 					}
 				}
 			}
