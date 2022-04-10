@@ -29,8 +29,7 @@ Using `sbt console` is a bit slower initially, as SBT will compile and check for
 Different requirements are applicable for the interpreter options.
 
 ### scala
-If you are using the system-wide Scala installation, you must have installed the Scala binaries and added the `scala` command to PATH.
-https://www.scala-lang.org/download/
+If you are using the system-wide Scala installation, you must have installed the Scala binaries and added the `scala` command to PATH. This can be done with the Coursier tool recommended on the scala-lang website: https://docs.scala-lang.org/getting-started/index.html
 
 ![Where to get binaries](img/install.png "Where to get binaries")
 
@@ -44,6 +43,11 @@ The default shell for the integrated terminal on Windows (PowerShell) is known t
 Change the shell to e.g. Git Bash as a workaround.
 
 ## Release Notes
+
+### 1.5.0
+
+Added:
+- Setting enable/diable automatic start of the Interactive Scala terminal (contribution by @kostafey).
 
 ### 1.4.0
 

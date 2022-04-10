@@ -1,4 +1,10 @@
 # Change Log
+
+## 1.5.0
+
+Added:
+- Setting enable/diable automatic start of the Interactive Scala terminal (contribution by @kostafey).
+
 ## 1.4.0
 
 Changed:
