@@ -105,7 +105,10 @@ export function activate(context: vscode.ExtensionContext) {
 	let configurationChanged = vscode.workspace.onDidChangeConfiguration(e => {
 		if(e.affectsConfiguration("interactiveScala")) {
 			configuration = vscode.workspace.getConfiguration("interactiveScala");
-			initialiseInteractiveScala();
+			let autoStart: boolean|undefined = configuration.get("autoStart");
+			if (autoStart === undefined || autoStart) {			
+				initialiseInteractiveScala();
+			}
 		}
 	});
 
@@ -123,7 +126,10 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(configurationChanged);
 	context.subscriptions.push(disposedTerminal);
 
-	initialiseInteractiveScala();
+	let autoStart: boolean|undefined = configuration.get("autoStart");
+	if (autoStart === undefined || autoStart) {
+		initialiseInteractiveScala();
+	}
 }
 
 export function deactivate() {
