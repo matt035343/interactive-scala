@@ -21,11 +21,11 @@
 		"commands": [
 			{
 				"command": "interactiveScala.executeInInteractiveScala",
-				"title": "Exectute selected code in Interactive Scala"
+				"title": "Execute selected code in Interactive Scala"
 			},
 			{
 				"command": "interactiveScala.executeFileInInteractiveScala",
-				"title": "Exectute selected file in Interactive Scala"
+				"title": "Execute selected file in Interactive Scala"
 			},
 			{
 				"command": "interactiveScala.resetInteractiveScala",
